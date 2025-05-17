@@ -31,8 +31,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useToast } from '@/hooks/use-toast';
-import { auth } from '@/lib/firebase'; // Import Firebase auth
-import { signOut } from 'firebase/auth'; // Import signOut
+import { auth } from '@/lib/firebase'; 
+import { signOut } from 'firebase/auth'; 
+import { ThemeToggle } from '@/components/shared/ThemeToggle'; // Added import
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -57,7 +58,6 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
     }
   };
 
-  // Placeholder for current user - will be replaced by auth state listener
   const currentUser = auth.currentUser; 
 
   return (
@@ -121,7 +121,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
           <div className="flex-1">
             {/* Page specific title or breadcrumbs could go here */}
           </div>
-           {/* Add any header right content, e.g. notifications or user menu for larger screens if needed */}
+          <ThemeToggle /> {/* Added ThemeToggle here */}
         </header>
         <main className="flex-1 p-4 md:p-6">
           {children}
