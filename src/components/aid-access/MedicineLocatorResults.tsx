@@ -4,7 +4,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import type { RareMedicineResult } from '@/lib/types'; // Using a simplified type for display
-import { Info, CheckCircle, XCircle, Building } from 'lucide-react';
+import { Info, CheckCircle, XCircle, Building, Lightbulb } from 'lucide-react';
 
 interface MedicineLocatorResultsProps {
   results: RareMedicineResult | null;
@@ -64,7 +64,7 @@ export function MedicineLocatorResults({ results, error }: MedicineLocatorResult
         {results.suggestions && (
            <div>
             <h3 className="font-semibold text-lg mb-1 flex items-center gap-2">
-              <Lightbulb className="text-primary" /> AI Suggestions
+              <Lightbulb className="text-primary h-5 w-5" /> AI Suggestions
             </h3>
             <p className="text-sm bg-muted p-3 rounded-md">{results.suggestions}</p>
           </div>
@@ -73,9 +73,3 @@ export function MedicineLocatorResults({ results, error }: MedicineLocatorResult
     </Card>
   );
 }
-
-// Helper component, if needed
-const Lightbulb = ({className}: {className?: string}) => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
-);
-
