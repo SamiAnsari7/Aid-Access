@@ -10,7 +10,7 @@ export interface NavLink {
 
 export const navigationLinks: NavLink[] = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, matchStartsWith: true },
-  { href: '/aid-access', label: 'Aid Access', icon: Pill, matchStartsWith: true },
+  { href: '/aid-access', label: 'Medicines', icon: Pill, matchStartsWith: true },
   { href: '/therapy', label: 'Therapy Services', icon: Users, matchStartsWith: true },
   { href: '/history', label: 'History & Summaries', icon: History, matchStartsWith: true },
 ];
