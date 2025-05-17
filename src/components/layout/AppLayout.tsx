@@ -3,7 +3,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   SidebarProvider,
   Sidebar,
@@ -28,11 +28,22 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu";
+import { useToast } from '@/hooks/use-toast';
 
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const { toast } = useToast();
+
+  const handleLogout = () => {
+    toast({
+      title: "Logged Out",
+      description: "You have been successfully logged out.",
+    });
+    router.push('/login');
+  };
 
   return (
     <SidebarProvider defaultOpen>
@@ -75,11 +86,13 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             <DropdownMenuContent side="right" align="start" className="w-56">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <UserCircle className="mr-2 h-4 w-4" />
-                <span>Profile</span>
+              <DropdownMenuItem asChild>
+                <Link href="/dashboard">
+                  <UserCircle className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem onSelect={handleLogout}>
                 <LogOut className="mr-2 h-4 w-4" />
                 <span>Log out</span>
               </DropdownMenuItem>
