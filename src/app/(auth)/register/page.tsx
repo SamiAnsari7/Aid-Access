@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -9,21 +10,58 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import type { UserRole } from '@/lib/types';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import React, { useState } from 'react';
+import { auth } from '@/lib/firebase'; // Import Firebase auth
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { LoadingSpinner } from '@/components/shared/LoadingSpinner';
 
 const userRoles: UserRole[] = ['Patient', 'Caregiver', 'Therapist'];
 
 export default function RegisterPage() {
   const { toast } = useToast();
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Placeholder for registration logic
-    toast({
-      title: "Registration Successful (Mock)",
-      description: "You can now log in.",
-    });
-    router.push('/login');
+    setIsLoading(true);
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const password = formData.get('password') as string;
+    // const age = formData.get('age') as string; // For Firestore later
+    // const contact = formData.get('contact') as string; // For Firestore later
+    // const location = formData.get('location') as string; // For Firestore later
+    // const userType = formData.get('userType') as UserRole; // For Firestore later
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      // Update profile with name (optional, but good practice)
+      if (userCredential.user) {
+        await updateProfile(userCredential.user, { displayName: name });
+      }
+      
+      toast({
+        title: "Registration Successful",
+        description: "Your account has been created. You can now log in.",
+      });
+      router.push('/login');
+    } catch (error: any) {
+      console.error("Registration error:", error);
+      let errorMessage = "Failed to register. Please try again.";
+      if (error.code === 'auth/email-already-in-use') {
+        errorMessage = 'This email address is already in use.';
+      } else if (error.code === 'auth/weak-password') {
+        errorMessage = 'The password is too weak. Please choose a stronger password.';
+      }
+      toast({
+        title: "Registration Failed",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -36,29 +74,29 @@ export default function RegisterPage() {
         <CardContent className="grid gap-4">
           <div className="grid gap-2">
             <Label htmlFor="name">Full Name</Label>
-            <Input id="name" placeholder="John Doe" required />
+            <Input id="name" name="name" placeholder="John Doe" required />
           </div>
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="m@example.com" required />
+            <Input id="email" name="email" type="email" placeholder="m@example.com" required />
           </div>
           <div className="grid gap-2">
             <Label htmlFor="password">Password</Label>
-            <Input id="password" type="password" required />
+            <Input id="password" name="password" type="password" required />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
               <Label htmlFor="age">Age</Label>
-              <Input id="age" type="number" placeholder="30" />
+              <Input id="age" name="age" type="number" placeholder="30" />
             </div>
             <div className="grid gap-2">
               <Label htmlFor="contact">Contact (Phone)</Label>
-              <Input id="contact" placeholder="123-456-7890" />
+              <Input id="contact" name="contact" placeholder="123-456-7890" />
             </div>
           </div>
           <div className="grid gap-2">
             <Label htmlFor="location">Location (City, Country)</Label>
-            <Input id="location" placeholder="New York, USA" />
+            <Input id="location" name="location" placeholder="New York, USA" />
           </div>
           <div className="grid gap-2">
             <Label htmlFor="user-type">User Type</Label>
@@ -75,7 +113,10 @@ export default function RegisterPage() {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-4">
-          <Button type="submit" className="w-full">Create Account</Button>
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            {isLoading && <LoadingSpinner size={16} className="mr-2" />}
+            {isLoading ? 'Creating Account...' : 'Create Account'}
+          </Button>
           <div className="text-center text-sm">
             Already have an account?{' '}
             <Link href="/login" className="underline text-primary hover:text-primary/80">

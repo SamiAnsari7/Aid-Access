@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from 'next/link';
@@ -7,19 +8,32 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import React, { useState } from 'react'; // Added React import
+import { LoadingSpinner } from '@/components/shared/LoadingSpinner'; // Added LoadingSpinner import
+
+// Actual Firebase login will be implemented in a next step.
+// For now, this page remains a mock.
 
 export default function LoginPage() {
   const { toast } = useToast();
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false); // Added isLoading state
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setIsLoading(true); // Set loading true
     // Placeholder for login logic
-    toast({
-      title: "Login Successful (Mock)",
-      description: "Redirecting to dashboard...",
-    });
-    router.push('/dashboard');
+    // In a real Firebase setup, you'd call signInWithEmailAndPassword here.
+    
+    // Simulate API call
+    setTimeout(() => {
+      toast({
+        title: "Login Attempt (Mock)", // Updated toast title
+        description: "Firebase login not yet implemented. Redirecting to dashboard for demo.",
+      });
+      router.push('/dashboard');
+      setIsLoading(false); // Set loading false
+    }, 1000);
   };
 
   return (
@@ -40,7 +54,10 @@ export default function LoginPage() {
           </div>
         </CardContent>
         <CardFooter className="flex flex-col gap-4">
-          <Button type="submit" className="w-full">Sign In</Button>
+          <Button type="submit" className="w-full" disabled={isLoading}>
+            {isLoading && <LoadingSpinner size={16} className="mr-2" />}
+            {isLoading ? 'Signing In...' : 'Sign In'}
+          </Button>
           <div className="text-center text-sm">
             Don&apos;t have an account?{' '}
             <Link href="/register" className="underline text-primary hover:text-primary/80">

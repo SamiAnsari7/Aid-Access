@@ -31,20 +31,34 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useToast } from '@/hooks/use-toast';
-
+import { auth } from '@/lib/firebase'; // Import Firebase auth
+import { signOut } from 'firebase/auth'; // Import signOut
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const { toast } = useToast();
 
-  const handleLogout = () => {
-    toast({
-      title: "Logged Out",
-      description: "You have been successfully logged out.",
-    });
-    router.push('/login');
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      toast({
+        title: "Logged Out",
+        description: "You have been successfully logged out.",
+      });
+      router.push('/login');
+    } catch (error) {
+      console.error("Logout error:", error);
+      toast({
+        title: "Logout Failed",
+        description: "Could not log you out. Please try again.",
+        variant: "destructive",
+      });
+    }
   };
+
+  // Placeholder for current user - will be replaced by auth state listener
+  const currentUser = auth.currentUser; 
 
   return (
     <SidebarProvider defaultOpen>
@@ -78,17 +92,17 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="w-full justify-start group-data-[collapsible=icon]:justify-center p-2 h-auto">
                  <Avatar className="h-8 w-8">
-                    <AvatarImage src="https://placehold.co/100x100.png" alt="User" data-ai-hint="user avatar" />
-                    <AvatarFallback>AA</AvatarFallback>
+                    <AvatarImage src={currentUser?.photoURL || "https://placehold.co/100x100.png"} alt={currentUser?.displayName || "User"} data-ai-hint="user avatar" />
+                    <AvatarFallback>{currentUser?.displayName?.charAt(0) || 'AA'}</AvatarFallback>
                   </Avatar>
-                <span className="ml-2 group-data-[collapsible=icon]:hidden">User Profile</span>
+                <span className="ml-2 group-data-[collapsible=icon]:hidden">{currentUser?.displayName || "User Profile"}</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent side="right" align="start" className="w-56">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuLabel>{currentUser?.email || "My Account"}</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link href="/profile"> {/* Changed from /dashboard to /profile */}
+                <Link href="/profile">
                   <UserCircle className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                 </Link>
