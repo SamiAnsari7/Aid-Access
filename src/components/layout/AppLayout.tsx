@@ -40,7 +40,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
         <SidebarHeader className="items-center justify-center p-4">
           <Link href="/dashboard" className="flex items-center gap-2 text-lg font-semibold text-primary">
             <Activity className="h-7 w-7 text-primary" />
-            <span className="group-data-[collapsible=icon]:hidden">MediPath</span>
+            <span className="group-data-[collapsible=icon]:hidden">Aid Access</span>
           </Link>
         </SidebarHeader>
         <SidebarContent>
@@ -67,7 +67,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               <Button variant="ghost" className="w-full justify-start group-data-[collapsible=icon]:justify-center p-2 h-auto">
                  <Avatar className="h-8 w-8">
                     <AvatarImage src="https://placehold.co/100x100.png" alt="User" data-ai-hint="user avatar" />
-                    <AvatarFallback>MP</AvatarFallback>
+                    <AvatarFallback>AA</AvatarFallback>
                   </Avatar>
                 <span className="ml-2 group-data-[collapsible=icon]:hidden">User Profile</span>
               </Button>

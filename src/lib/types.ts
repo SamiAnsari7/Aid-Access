@@ -17,6 +17,7 @@ export interface Therapist {
   type: 'Speech' | 'Occupational' | 'Behavioral' | 'Physical';
   location: string;
   imageUrl?: string;
+  imageAiHint?: string; // Added field for specific AI hints
   description: string;
   contact: string;
 }

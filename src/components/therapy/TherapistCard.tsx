@@ -22,7 +22,7 @@ export function TherapistCard({ therapist }: TherapistCardProps) {
               alt={therapist.name} 
               layout="fill" 
               objectFit="cover"
-              data-ai-hint="therapist portrait" 
+              data-ai-hint={therapist.imageAiHint || 'therapist portrait'} 
             />
           </div>
         )}

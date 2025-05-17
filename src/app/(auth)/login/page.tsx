@@ -25,7 +25,7 @@ export default function LoginPage() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle className="text-2xl">Login to MediPath</CardTitle>
+        <CardTitle className="text-2xl">Login to Aid Access</CardTitle>
         <CardDescription>Enter your email below to login to your account.</CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>

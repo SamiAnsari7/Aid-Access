@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'MediPath - AI-Powered Aid Access',
-  description: 'Your partner in navigating complex medical needs with AI assistance.',
+  title: 'Aid Access',
+  description: 'Your AI partner for accessing medical aid and information.',
 };
 
 export default function RootLayout({

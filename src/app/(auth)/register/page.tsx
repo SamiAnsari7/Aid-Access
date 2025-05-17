@@ -29,7 +29,7 @@ export default function RegisterPage() {
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
-        <CardTitle className="text-2xl">Register for MediPath</CardTitle>
+        <CardTitle className="text-2xl">Register for Aid Access</CardTitle>
         <CardDescription>Create an account to access AI-powered medical aid.</CardDescription>
       </CardHeader>
       <form onSubmit={handleSubmit}>
