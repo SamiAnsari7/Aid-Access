@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter }
 import { Badge } from '@/components/ui/badge';
 import type { Therapist } from '@/lib/types';
 import { MapPin, Phone, Mail } from 'lucide-react';
-import { Button } from '../ui/button';
+import { Button } from '@/components/ui/button';
 
 interface TherapistCardProps {
   therapist: Therapist;
@@ -17,13 +17,14 @@ export function TherapistCard({ therapist }: TherapistCardProps) {
     <Card className="overflow-hidden flex flex-col h-full">
       <CardHeader className="p-0 relative">
         {therapist.imageUrl && (
-          <div className="aspect-[4/3] w-full relative">
-            <Image 
-              src={therapist.imageUrl} 
-              alt={therapist.name} 
+          <div className="aspect-[4/3] w-full relative overflow-hidden">
+            <Image
+              src={therapist.imageUrl}
+              alt={therapist.name}
               fill
-              className="object-cover"
-              data-ai-hint={therapist.imageAiHint || 'therapist portrait'} 
+              className="object-cover block" 
+              data-ai-hint={therapist.imageAiHint || 'therapist portrait'}
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </div>
         )}
