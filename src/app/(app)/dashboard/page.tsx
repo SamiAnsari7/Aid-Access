@@ -1,14 +1,16 @@
+
 "use client";
 
 import React, { useState } from 'react';
 import { PageHeader } from '@/components/shared/PageHeader';
-import { MedicalProfileForm } from '@/components/dashboard/MedicalProfileForm';
+// MedicalProfileForm is removed as it's now on a dedicated /profile page
 import { MedicineSuggestions } from '@/components/dashboard/MedicineSuggestions';
 import { LayoutDashboard } from 'lucide-react';
 import type { MedicalProfile } from '@/lib/types';
 import { Separator } from '@/components/ui/separator';
 
-// Mock initial profile data - in a real app, this would come from a store or API
+// Mock initial profile data - this will be used by MedicineSuggestions on the dashboard.
+// The actual editable profile is now on the /profile page.
 const mockInitialProfile: MedicalProfile = {
   name: 'Jane Doe',
   age: 34,
@@ -20,24 +22,20 @@ const mockInitialProfile: MedicalProfile = {
 
 
 export default function DashboardPage() {
+  // patientProfile state remains to feed MedicineSuggestions, but is not updated by a form on this page anymore.
   const [patientProfile, setPatientProfile] = useState<MedicalProfile | null>(mockInitialProfile);
 
-  const handleProfileUpdate = (updatedProfile: MedicalProfile) => {
-    setPatientProfile(updatedProfile);
-  };
+  // handleProfileUpdate is removed as the form is no longer on this page.
   
   return (
     <div className="space-y-8">
       <PageHeader 
         title="Patient Dashboard" 
-        description="Manage your medical profile and get AI-powered insights."
+        description="View your medical overview and get AI-powered insights." // Updated description
         icon={<LayoutDashboard />}
       />
       
-      <MedicalProfileForm 
-        initialProfile={patientProfile || undefined} 
-        onSubmitSuccess={handleProfileUpdate}
-      />
+      {/* MedicalProfileForm is removed from here */}
 
       <Separator className="my-8" />
 

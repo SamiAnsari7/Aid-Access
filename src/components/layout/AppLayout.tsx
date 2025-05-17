@@ -1,3 +1,4 @@
+
 // src/components/layout/AppLayout.tsx
 "use client";
 
@@ -87,7 +88,7 @@ export function AppLayout({ children }: { children: React.ReactNode }) {
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
-                <Link href="/dashboard">
+                <Link href="/profile"> {/* Changed from /dashboard to /profile */}
                   <UserCircle className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                 </Link>
