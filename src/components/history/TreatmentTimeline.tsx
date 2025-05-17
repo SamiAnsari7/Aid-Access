@@ -1,3 +1,4 @@
+
 "use client";
 
 import React from 'react';
@@ -32,6 +33,7 @@ export function TreatmentTimeline({ events = defaultTimelineEvents }: TreatmentT
                   event.type === 'Visit' ? 'bg-blue-500 border-blue-600' :
                   event.type === 'Medication' ? 'bg-green-500 border-green-600' :
                   event.type === 'Suggestion' ? 'bg-yellow-500 border-yellow-600' :
+                  event.type === 'AppointmentScheduled' ? 'bg-purple-500 border-purple-600' : // Added style for AppointmentScheduled
                   'bg-gray-500 border-gray-600' // Default for System or other types
                 )}>
                   {event.icon && <event.icon className="h-3 w-3 text-white" />}

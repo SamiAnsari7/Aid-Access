@@ -1,5 +1,6 @@
+
 import type { TimelineEvent } from '@/lib/types';
-import { Stethoscope, PillIcon, Lightbulb, CalendarDays } from 'lucide-react';
+import { Stethoscope, PillIcon, Lightbulb, CalendarDays, CalendarPlus } from 'lucide-react'; // Added CalendarPlus
 
 export const timelineEvents: TimelineEvent[] = [
   {
@@ -17,6 +18,14 @@ export const timelineEvents: TimelineEvent[] = [
     title: 'Started Amoxicillin',
     description: 'Prescribed for a bacterial infection. 250mg, 3 times a day for 7 days.',
     icon: PillIcon,
+  },
+  {
+    id: '7', // New ID for the mock scheduled appointment
+    date: new Date(Date.now() - 1000 * 60 * 60 * 24 * 18).toISOString(), // 18 days ago (example)
+    type: 'AppointmentScheduled',
+    title: 'Appointment Booked with Dr. Emily Carter',
+    description: 'Mock appointment scheduled via Therapy Services page for speech therapy consultation.',
+    icon: CalendarPlus,
   },
   {
     id: '3',

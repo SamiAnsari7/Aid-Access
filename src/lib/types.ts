@@ -1,3 +1,4 @@
+
 import type React from 'react';
 
 export type UserRole = 'Patient' | 'Caregiver' | 'Therapist';
@@ -25,7 +26,7 @@ export interface Therapist {
 export interface TimelineEvent {
   id: string;
   date: string;
-  type: 'Visit' | 'Medication' | 'Suggestion' | 'System';
+  type: 'Visit' | 'Medication' | 'Suggestion' | 'System' | 'AppointmentScheduled'; // Added 'AppointmentScheduled'
   title: string;
   description: string;
   icon?: React.ElementType;
