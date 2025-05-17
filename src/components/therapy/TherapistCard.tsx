@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -20,8 +21,8 @@ export function TherapistCard({ therapist }: TherapistCardProps) {
             <Image 
               src={therapist.imageUrl} 
               alt={therapist.name} 
-              layout="fill" 
-              objectFit="cover"
+              fill
+              className="object-cover"
               data-ai-hint={therapist.imageAiHint || 'therapist portrait'} 
             />
           </div>
