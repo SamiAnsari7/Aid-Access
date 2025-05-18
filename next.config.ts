@@ -23,6 +23,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'athome.medline.com',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };
