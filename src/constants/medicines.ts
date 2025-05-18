@@ -25,7 +25,7 @@ export const marketplaceMedicines: MarketplaceMedicine[] = [
     name: 'Vitamin C 1000mg Effervescent',
     description: 'Boosts immunity and supports overall health. Orange flavor, 20 tablets.',
     price: '$12.99',
-    imageUrl: 'https://placehold.co/300x200.png',
+    imageUrl: 'https://i5.walmartimages.com/seo/ORAZ-Vitamin-C-1000mg-20-Vegetable-Effervescent-Tablets-Orange-Flavored_d18dd009-0ce1-4f1b-98a4-b3e457f01554.bb0729f7dcea4dedec3717de4029ea86.jpeg?odnHeight=580&odnWidth=580&odnBg=FFFFFF',
     imageAiHint: 'vitamin supplement',
     category: 'Vitamins & Supplements',
   },
