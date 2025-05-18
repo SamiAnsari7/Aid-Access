@@ -25,7 +25,7 @@ export const marketplaceMedicines: MarketplaceMedicine[] = [
     name: 'Zonigran',
     description: 'An anticonvulsant medication used in the treatment of epilepsy.',
     price: '$28.99',
-    imageUrl: 'https://placehold.co/300x200.png',
+    imageUrl: 'https://assets.truemeds.in/Images/ProductImage/TM-TACR1-045350/zonegran-tablet-10_zonegran-tablet-10--TM-TACR1-045350_1.png?width=320',
     imageAiHint: 'epilepsy treatment',
     category: 'Anti-Epileptics',
   },
