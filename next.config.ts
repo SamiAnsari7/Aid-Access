@@ -41,6 +41,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'images.apollo247.in',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

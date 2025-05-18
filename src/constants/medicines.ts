@@ -16,7 +16,7 @@ export const marketplaceMedicines: MarketplaceMedicine[] = [
     name: 'Cloba',
     description: 'Prescribed to help control seizures, often as adjunctive therapy.',
     price: '$32.75',
-    imageUrl: 'https://placehold.co/300x200.png',
+    imageUrl: 'https://images.apollo247.in/pub/media/catalog/product/c/l/clo0001.jpg?tr=w-264,q-80,f-webp,dpr-false,c-at_max',
     imageAiHint: 'neurology pills',
     category: 'Anti-Epileptics',
   },
