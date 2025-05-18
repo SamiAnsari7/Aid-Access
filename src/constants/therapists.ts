@@ -10,8 +10,8 @@ export const therapists: Therapist[] = [
     name: 'Jabbar Fahad',
     type: 'Speech',
     location: 'New York, NY',
-    imageUrl: 'https://placehold.co/400x300.png',
-    imageAiHint: 'woman doctor', // Note: hint might need update if gender changes significantly
+    imageUrl: 'https://d35oenyzp35321.cloudfront.net/Varun_Khurana_a6e7c98365.jpg',
+    imageAiHint: 'male therapist',
     description: 'Specializes in pediatric speech disorders and language development. 10+ years of experience.',
     contact: 'ecarter@therapy.com',
   },
@@ -31,7 +31,7 @@ export const therapists: Therapist[] = [
     type: 'Behavioral',
     location: 'Chicago, IL',
     imageUrl: 'https://placehold.co/400x300.png',
-    imageAiHint: 'child therapist', // Note: hint might need update if gender changes significantly
+    imageAiHint: 'child therapist',
     description: 'Works with children and adolescents on behavioral challenges, including ADHD and ASD.',
     contact: 'asharma@therapy.com',
   },
