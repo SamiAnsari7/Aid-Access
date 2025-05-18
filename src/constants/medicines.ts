@@ -7,7 +7,7 @@ export const marketplaceMedicines: MarketplaceMedicine[] = [
     name: 'Valparen',
     description: 'Used for managing certain types of seizures and neurological conditions.',
     price: '$25.50',
-    imageUrl: 'https://placehold.co/300x200.png',
+    imageUrl: 'https://assets.truemeds.in/Images/ProductImage/TM-TACR1-069374/valparin-500-tablet-15_valparin-500-tablet-15--TM-TACR1-069374_1.png?width=320',
     imageAiHint: 'prescription medication',
     category: 'Anti-Epileptics',
   },
@@ -48,4 +48,3 @@ export const marketplaceMedicines: MarketplaceMedicine[] = [
     category: 'Sedatives/Anxiolytics',
   },
 ];
-
