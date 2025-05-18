@@ -7,17 +7,17 @@ export const therapyTypes = ['Speech', 'Occupational', 'Behavioral', 'Physical']
 export const therapists: Therapist[] = [
   {
     id: '1',
-    name: 'Dr. Emily Carter',
+    name: 'Jabbar Fahad',
     type: 'Speech',
     location: 'New York, NY',
     imageUrl: 'https://placehold.co/400x300.png',
-    imageAiHint: 'woman doctor',
+    imageAiHint: 'woman doctor', // Note: hint might need update if gender changes significantly
     description: 'Specializes in pediatric speech disorders and language development. 10+ years of experience.',
     contact: 'ecarter@therapy.com',
   },
   {
     id: '2',
-    name: 'Johnathan Lee',
+    name: 'Sai Charan',
     type: 'Occupational',
     location: 'San Francisco, CA',
     imageUrl: 'https://placehold.co/400x300.png',
@@ -27,17 +27,17 @@ export const therapists: Therapist[] = [
   },
   {
     id: '3',
-    name: 'Dr. Anya Sharma',
+    name: 'Sami Ansari',
     type: 'Behavioral',
     location: 'Chicago, IL',
     imageUrl: 'https://placehold.co/400x300.png',
-    imageAiHint: 'child therapist',
+    imageAiHint: 'child therapist', // Note: hint might need update if gender changes significantly
     description: 'Works with children and adolescents on behavioral challenges, including ADHD and ASD.',
     contact: 'asharma@therapy.com',
   },
   {
     id: '4',
-    name: 'Michael Brown',
+    name: 'Omer Yafai',
     type: 'Physical',
     location: 'Austin, TX',
     imageUrl: 'https://placehold.co/400x300.png',
@@ -47,7 +47,7 @@ export const therapists: Therapist[] = [
   },
   {
     id: '5',
-    name: 'Dr. Sarah Davis',
+    name: 'Hamza',
     type: 'Speech',
     location: 'Boston, MA',
     imageUrl: 'https://placehold.co/400x300.png',
@@ -57,7 +57,7 @@ export const therapists: Therapist[] = [
   },
   {
     id: '6',
-    name: 'David Wilson',
+    name: 'David Wilson', // This name remains as you provided 5 new names.
     type: 'Occupational',
     location: 'Seattle, WA',
     imageUrl: 'https://placehold.co/400x300.png',
