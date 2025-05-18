@@ -18,7 +18,7 @@ export interface Therapist {
   type: 'Speech' | 'Occupational' | 'Behavioral' | 'Physical';
   location: string;
   imageUrl?: string;
-  imageAiHint?: string; // Added field for specific AI hints
+  imageAiHint?: string;
   description: string;
   contact: string;
 }
@@ -26,7 +26,7 @@ export interface Therapist {
 export interface TimelineEvent {
   id: string;
   date: string;
-  type: 'Visit' | 'Medication' | 'Suggestion' | 'System' | 'AppointmentScheduled'; // Added 'AppointmentScheduled'
+  type: 'Visit' | 'Medication' | 'Suggestion' | 'System' | 'AppointmentScheduled';
   title: string;
   description: string;
   icon?: React.ElementType;
@@ -40,5 +40,15 @@ export interface RareMedicineResult {
 }
 
 export interface MedicineSuggestion {
-  suggestion: string; // Individual suggestion string
+  suggestion: string;
+}
+
+export interface MarketplaceMedicine {
+  id: string;
+  name: string;
+  description: string;
+  price: string;
+  imageUrl: string;
+  imageAiHint: string;
+  category: string;
 }
