@@ -47,8 +47,13 @@ export interface MarketplaceMedicine {
   id: string;
   name: string;
   description: string;
-  price: string;
+  price: string; // Keep as string for display, parse for calculations
   imageUrl: string;
   imageAiHint: string;
   category: string;
+}
+
+// For simplicity in this mock, CartItem will extend MarketplaceMedicine and add quantity
+export interface CartItem extends MarketplaceMedicine {
+  quantity: number;
 }

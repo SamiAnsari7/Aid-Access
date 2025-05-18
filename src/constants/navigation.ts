@@ -1,6 +1,6 @@
 
 import type React from 'react';
-import { LayoutDashboard, Pill, Users, History, ShoppingCart } from 'lucide-react'; // Added ShoppingCart
+import { LayoutDashboard, Pill, Users, History, ShoppingCart, ShoppingBag } from 'lucide-react'; // Added ShoppingCart, ShoppingBag
 
 export interface NavLink {
   href: string;
@@ -12,7 +12,8 @@ export interface NavLink {
 export const navigationLinks: NavLink[] = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, matchStartsWith: true },
   { href: '/aid-access', label: 'Medicines', icon: Pill, matchStartsWith: true },
-  { href: '/marketplace', label: 'Marketplace', icon: ShoppingCart, matchStartsWith: true }, // Added Marketplace
+  { href: '/marketplace', label: 'Marketplace', icon: ShoppingCart, matchStartsWith: true },
+  { href: '/cart', label: 'Cart', icon: ShoppingBag, matchStartsWith: true }, // Added Cart
   { href: '/therapy', label: 'Therapy Services', icon: Users, matchStartsWith: true },
   { href: '/history', label: 'History & Summaries', icon: History, matchStartsWith: true },
 ];
