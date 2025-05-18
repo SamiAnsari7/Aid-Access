@@ -6,17 +6,14 @@ import Link from 'next/link'; // Import Link
 import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import type { Therapist } from '@/lib/types';
-import { MapPin, Phone, Mail, CalendarPlus } from 'lucide-react';
+import { MapPin, CalendarPlus } from 'lucide-react'; // Removed Phone, Mail
 import { Button } from '@/components/ui/button';
-// import { useToast } from '@/hooks/use-toast'; // No longer used for this specific button
 
 interface TherapistCardProps {
   therapist: Therapist;
 }
 
 export function TherapistCard({ therapist }: TherapistCardProps) {
-  // const { toast } = useToast(); // Toast for booking is now handled on the booking page
-
   return (
     <Card className="overflow-hidden flex flex-col h-full">
       <CardHeader className="p-0 relative">
@@ -45,16 +42,11 @@ export function TherapistCard({ therapist }: TherapistCardProps) {
             <MapPin className="h-4 w-4 mr-2 shrink-0" />
             <span>{therapist.location}</span>
           </div>
-          <div className="flex items-center">
-            <Mail className="h-4 w-4 mr-2 shrink-0" />
-            <a href={`mailto:${therapist.contact}`} className="hover:underline">{therapist.contact}</a>
-          </div>
+          {/* Removed contact email display section */}
         </div>
       </CardContent>
       <CardFooter className="p-4 border-t flex flex-col gap-2">
-        <Button variant="outline" className="w-full">
-          <Phone className="h-4 w-4 mr-2" /> Contact Therapist
-        </Button>
+        {/* Removed Contact Therapist Button */}
         <Button asChild variant="default" className="w-full">
           <Link href={`/therapy/${therapist.id}/book`}>
             <CalendarPlus className="h-4 w-4 mr-2" /> Book Appointment
