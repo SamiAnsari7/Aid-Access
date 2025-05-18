@@ -26,15 +26,15 @@ export default function MarketplacePage() {
   return (
     <div className="space-y-8">
       <PageHeader
-        title="Medicine Marketplace"
-        description="Browse and 'purchase' medicines online. (This is a mock interface)"
+        title="Drugs"
+        description="Browse and 'purchase' drugs online. (This is a mock interface)"
         icon={<ShoppingCart />}
       />
 
       <div className="grid md:grid-cols-3 gap-4 mb-6 p-4 border rounded-lg bg-card shadow">
         <div>
           <Input
-            placeholder="Search medicines..."
+            placeholder="Search drugs..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="h-10"
@@ -63,7 +63,7 @@ export default function MarketplacePage() {
         </div>
       ) : (
         <div className="text-center py-10">
-          <p className="text-lg text-muted-foreground">No medicines found matching your criteria.</p>
+          <p className="text-lg text-muted-foreground">No drugs found matching your criteria.</p>
         </div>
       )}
     </div>
