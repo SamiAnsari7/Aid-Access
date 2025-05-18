@@ -36,6 +36,22 @@ export default function BookAppointmentPage() {
 
   const therapist = allTherapists.find(t => t.id === therapistId);
 
+  const handleBookingConfirmation = () => {
+    if (!selectedDate || !selectedTimeSlot) {
+      toast({
+        title: "Missing Information",
+        description: "Please select a date and time slot.",
+        variant: "destructive",
+      });
+      return;
+    }
+    toast({
+      title: "Appointment Booked (Mock)",
+      description: `Your mock appointment with ${therapist!.name} on ${selectedDate.toLocaleDateString()} at ${selectedTimeSlot} has been scheduled.`,
+    });
+    // In a real app, you might add this to a timeline or database
+  };
+
   if (!therapist) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[calc(100vh-200px)] text-center p-4">
@@ -51,22 +67,6 @@ export default function BookAppointmentPage() {
       </div>
     );
   }
-
-  const handleBookingConfirmation = () => {
-    if (!selectedDate || !selectedTimeSlot) {
-      toast({
-        title: "Missing Information",
-        description: "Please select a date and time slot.",
-        variant: "destructive",
-      });
-      return;
-    }
-    toast({
-      title: "Appointment Booked (Mock)",
-      description: `Your mock appointment with ${therapist.name} on ${selectedDate.toLocaleDateString()} at ${selectedTimeSlot} has been scheduled.`,
-    });
-    // In a real app, you might add this to a timeline or database
-  };
 
   return (
     <div className="space-y-6">
@@ -122,7 +122,7 @@ export default function BookAppointmentPage() {
                 selected={selectedDate}
                 onSelect={setSelectedDate}
                 className="p-0 border rounded-md [&_button]:text-sm"
-                disabled={(date) => date &lt; new Date(new Date().setDate(new Date().getDate() -1)) } // Disable past dates
+                disabled={(date) => date < new Date(new Date().setDate(new Date().getDate() -1)) } 
               />
             </div>
             <div>
@@ -153,4 +153,3 @@ export default function BookAppointmentPage() {
     </div>
   );
 }
-
