@@ -17,8 +17,8 @@ import { useToast } from '@/hooks/use-toast';
 export default function CartPage() {
   const [cartItems, setCartItems] = useState<CartItem[]>(initialMockCartItems);
   const { toast } = useToast();
+  const mockShippingCost = 50.00; // Mock shipping cost in Rupees
 
-  // Mock functions for quantity change and item removal
   const handleQuantityChange = (itemId: string, newQuantity: number) => {
     setCartItems(prevItems =>
       prevItems.map(item =>
@@ -33,15 +33,17 @@ export default function CartPage() {
 
   const calculateGrandTotal = () => {
     return cartItems.reduce((total, item) => {
-      const price = parseFloat(item.price.replace('$', ''));
+      const price = parseFloat(item.price.replace('₹', '')); // Updated currency symbol
       return total + (isNaN(price) ? 0 : price * item.quantity);
     }, 0).toFixed(2);
   };
 
+  const grandTotalWithShipping = (parseFloat(calculateGrandTotal()) + mockShippingCost).toFixed(2);
+
   const handleCheckout = () => {
     toast({
       title: "Proceeding to Checkout (Mock)",
-      description: `Your order total is $${calculateGrandTotal()}. This is a mock action.`,
+      description: `Your order total is ₹${grandTotalWithShipping}. This is a mock action.`, // Updated currency symbol
     });
     // In a real app, navigate to a checkout page or process payment
   };
@@ -106,16 +108,16 @@ export default function CartPage() {
               <CardContent className="space-y-4">
                 <div className="flex justify-between">
                   <span>Subtotal</span>
-                  <span>${calculateGrandTotal()}</span>
+                  <span>₹{calculateGrandTotal()}</span> 
                 </div>
                 <div className="flex justify-between">
                   <span>Shipping (Mock)</span>
-                  <span>$5.00</span>
+                  <span>₹{mockShippingCost.toFixed(2)}</span> 
                 </div>
                 <Separator />
                 <div className="flex justify-between font-semibold text-lg">
                   <span>Grand Total</span>
-                  <span>${(parseFloat(calculateGrandTotal()) + 5.00).toFixed(2)}</span>
+                  <span>₹{grandTotalWithShipping}</span> 
                 </div>
               </CardContent>
               <CardFooter className="flex flex-col gap-3">

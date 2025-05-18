@@ -31,7 +31,7 @@ export function CartItemRow({ item, onQuantityChange, onRemoveItem }: CartItemRo
     toast({ title: `${item.name} removed from cart (Mock)`, variant: 'destructive' });
   };
   
-  const priceAsNumber = parseFloat(item.price.replace('$', ''));
+  const priceAsNumber = parseFloat(item.price.replace('₹', '')); // Updated currency symbol
   const subtotal = !isNaN(priceAsNumber) ? (priceAsNumber * item.quantity).toFixed(2) : 'N/A';
 
 
@@ -63,7 +63,7 @@ export function CartItemRow({ item, onQuantityChange, onRemoveItem }: CartItemRo
           className="w-20 text-center h-9"
         />
       </td>
-      <td className="p-4 text-center">${subtotal}</td>
+      <td className="p-4 text-center">₹{subtotal}</td> 
       <td className="p-4 text-center">
         <Button variant="ghost" size="icon" onClick={handleRemove} aria-label="Remove item">
           <Trash2 className="h-5 w-5 text-destructive" />
