@@ -100,24 +100,27 @@ export function PatientProgressOverview() {
 
         <div>
           <h3 className="text-lg font-semibold mb-2">Monthly Progress</h3>
-          <div className="h-[300px] w-full">
-            <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={monthlyProgressData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
-                  <YAxis tickLine={false} axisLine={false} tickMargin={8} />
-                  <Tooltip
-                    cursor={{ fill: 'hsl(var(--muted))' }}
-                    content={<ChartTooltipContent indicator="dot" />}
-                  />
-                  <Legend />
-                  <Bar dataKey="recoveryScore" fill="var(--color-recoveryScore)" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="moodLevel" fill="var(--color-moodLevel)" radius={[4, 4, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </ChartContainer>
-          </div>
+          {/* 
+            Removed the intermediate fixed-height div.
+            Applied height directly to ChartContainer using className.
+            The ChartContainer itself uses aspect-video by default, 
+            so it will fit its content within these h-[300px] w-full bounds.
+          */}
+          <ChartContainer config={chartConfig} className="h-[300px] w-full">
+            {/* ResponsiveContainer is rendered internally by ChartContainer and will use the h-[300px] w-full */}
+            <BarChart data={monthlyProgressData} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} />
+              <XAxis dataKey="month" tickLine={false} axisLine={false} tickMargin={8} />
+              <YAxis tickLine={false} axisLine={false} tickMargin={8} />
+              <Tooltip
+                cursor={{ fill: 'hsl(var(--muted))' }}
+                content={<ChartTooltipContent indicator="dot" />}
+              />
+              <Legend />
+              <Bar dataKey="recoveryScore" fill="var(--color-recoveryScore)" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="moodLevel" fill="var(--color-moodLevel)" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ChartContainer>
         </div>
       </CardContent>
     </Card>
