@@ -1,3 +1,4 @@
+
 import type { Therapist } from '@/lib/types';
 
 export const therapyTypes = ['Speech', 'Occupational', 'Behavioral', 'Physical'] as const;
